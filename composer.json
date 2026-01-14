@@ -1,0 +1,37 @@
+{
+  "name": "mjajak/ci4-indodev-toolkit",
+  "description": "Toolkit Developer Indonesia untuk CodeIgniter 4 (Tanggal, Rupiah, Terbilang, Validasi NIP/NIK/NPWP)",
+  "keywords": [
+    "codeigniter4",
+    "indonesia",
+    "helper",
+    "toolkit",
+    "rupiah",
+    "terbilang",
+    "nip",
+    "nik"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Fajar Yogatama",
+      "email": "mjajak@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "codeigniter4/framework": "^4.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mjajak\\Ci4IndodevToolkit\\": "src/"
+    },
+    "files": [
+      "src/Helpers/indodev_helper.php"
+    ]
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
