@@ -19,7 +19,13 @@ class IndoSecurity
      */
     public static function mask(string $string, int $keepFirst = 4, int $keepLast = 4): string
     {
+        $keepFirst = max(0, $keepFirst);
+        $keepLast = max(0, $keepLast);
         $len = strlen($string);
+
+        if ($len === 0) {
+            return '';
+        }
 
         // Jika string terlalu pendek, sensor saja semuanya kecuali karakter pertama
         if ($len <= ($keepFirst + $keepLast)) {

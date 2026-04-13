@@ -29,52 +29,113 @@ class IndoDate
         12 => 'Desember'
     ];
 
+    private static function parseTimestamp($date): ?int
+    {
+        if (! is_scalar($date)) {
+            return null;
+        }
+
+        $date = trim((string) $date);
+        if ($date === '') {
+            return null;
+        }
+
+        $timestamp = strtotime($date);
+
+        return $timestamp === false ? null : $timestamp;
+    }
+
+    private static function originalOrEmpty($date): string
+    {
+        return is_scalar($date) ? trim((string) $date) : '';
+    }
+
 
 
     public static function full($date): string
     {
-        $ts = strtotime($date);
+        $ts = self::parseTimestamp($date);
+        if ($ts === null) {
+            return self::originalOrEmpty($date);
+        }
+
         return self::$hari[date('l', $ts)] . ", " . date('j', $ts) . " " . self::$bulan[(int)date('n', $ts)] . " " . date('Y', $ts);
     }
 
     public static function simple($date): string
     {
-        $ts = strtotime($date);
+        $ts = self::parseTimestamp($date);
+        if ($ts === null) {
+            return self::originalOrEmpty($date);
+        }
+
         return date('j', $ts) . " " . self::$bulan[(int)date('n', $ts)] . " " . date('Y', $ts);
     }
 
     public static function withTime($date): string
     {
-        $ts = strtotime($date);
+        $ts = self::parseTimestamp($date);
+        if ($ts === null) {
+            return self::originalOrEmpty($date);
+        }
+
         return self::full($date) . " " . date('H:i', $ts);
     }
 
     public static function monthYear($date): string
     {
-        $ts = strtotime($date);
+        $ts = self::parseTimestamp($date);
+        if ($ts === null) {
+            return self::originalOrEmpty($date);
+        }
+
         return self::$bulan[(int)date('n', $ts)] . " " . date('Y', $ts);
     }
 
     public static function day($date): string
     {
-        return self::$hari[date('l', strtotime($date))];
+        $ts = self::parseTimestamp($date);
+        if ($ts === null) {
+            return self::originalOrEmpty($date);
+        }
+
+        return self::$hari[date('l', $ts)];
     }
     public static function month($date): string
     {
-        return self::$bulan[(int)date('n', strtotime($date))];
+        $ts = self::parseTimestamp($date);
+        if ($ts === null) {
+            return self::originalOrEmpty($date);
+        }
+
+        return self::$bulan[(int)date('n', $ts)];
     }
     public static function year($date): string
     {
-        return date('Y', strtotime($date));
+        $ts = self::parseTimestamp($date);
+        if ($ts === null) {
+            return self::originalOrEmpty($date);
+        }
+
+        return date('Y', $ts);
     }
     public static function time($date): string
     {
-        return date('H:i:s', strtotime($date));
+        $ts = self::parseTimestamp($date);
+        if ($ts === null) {
+            return self::originalOrEmpty($date);
+        }
+
+        return date('H:i:s', $ts);
     }
 
     public static function relative($date): string
     {
-        $ts = strtotime($date);
+        $ts = self::parseTimestamp($date);
+        if ($ts === null) {
+            return self::originalOrEmpty($date);
+        }
+
         $diff = time() - $ts;
 
         if ($diff < 1) return 'Baru saja';
