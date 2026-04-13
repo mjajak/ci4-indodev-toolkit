@@ -6,7 +6,7 @@ use Mjajak\Ci4IndodevToolkit\Libraries\IndoValidation;
 use Mjajak\Ci4IndodevToolkit\Libraries\IndoSecurity;
 
 
-// Begin_Of_IndoDate_Functions
+// IndoDate helpers
 if (! function_exists('indo_date_lengkap')) {
     /** Format: Rabu, 14 Januari 2026 */
     function indo_date_lengkap($date)
@@ -62,11 +62,11 @@ if (! function_exists('indo_date_relative')) {
         return IndoDate::relative($date);
     }
 }
-// End_Of_IndoDate_Functions
+// End IndoDate helpers
 
 
-// Begin_Of_IndoNumber_Functions
-if (!function_exists('indo_number_sanitize')) {
+// IndoNumber helpers
+if (! function_exists('indo_number_sanitize')) {
     /** Contoh: Rp 1.500.000 => 1500000 */
     function indo_number_sanitize($string)
     {
@@ -74,29 +74,32 @@ if (!function_exists('indo_number_sanitize')) {
     }
 }
 
-if (!function_exists('indo_number_thousand_separator')) {
+if (! function_exists('indo_number_thousand_separator')) {
+    /** Format angka dengan pemisah ribuan Indonesia. */
     function indo_number_thousand_separator($angka)
     {
         return IndoNumber::number_only($angka);
     }
 }
 
-if (!function_exists('indo_number_rupiah')) {
+if (! function_exists('indo_number_rupiah')) {
+    /** Format angka ke Rupiah tanpa spasi, contoh: Rp1.500.000 */
     function indo_number_rupiah($angka)
     {
         return IndoNumber::rupiah($angka);
     }
 }
 
-if (!function_exists('indo_number_terbilang')) {
+if (! function_exists('indo_number_terbilang')) {
+    /** Ubah angka menjadi teks terbilang bahasa Indonesia. */
     function indo_number_terbilang($angka)
     {
         return IndoNumber::terbilang($angka);
     }
 }
-// End_Of_IndoNumber_Functions
+// End IndoNumber helpers
 
-// Begin_Of_IndoValidation_Functions
+// IndoValidation helpers
 
 if (! function_exists('is_nip')) {
     /** Validasi format NIP (18 digit) */
@@ -153,12 +156,14 @@ if (! function_exists('is_kode_pos')) {
         return IndoValidation::kodePos($kodePos);
     }
 }
-// End_Of_IndoValidation_Functions
+// End IndoValidation helpers
 
 
-// Begin_Of_IndoSecurity_Functions
+// IndoSecurity helpers
 if (! function_exists('indo_security_mask')) {
-    /** * Sensor data sensitif (tengah otomatis). 
+    /**
+     * Sensor data sensitif dengan masking di bagian tengah.
+     *
      * @param int $depan Jumlah karakter yang ditampilkan di depan
      * @param int $belakang Jumlah karakter yang ditampilkan di belakang
      */
@@ -168,4 +173,4 @@ if (! function_exists('indo_security_mask')) {
     }
 }
 
-// End_Of_IndoSecurity_Functions
+// End IndoSecurity helpers
