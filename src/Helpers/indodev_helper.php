@@ -3,7 +3,7 @@
 use Mjajak\Ci4IndodevToolkit\Libraries\IndoDate;
 use Mjajak\Ci4IndodevToolkit\Libraries\IndoNumber;
 use Mjajak\Ci4IndodevToolkit\Libraries\IndoValidation;
-use Mjajak\CI4IndodevToolkit\Libraries\IndoSecurity;
+use Mjajak\Ci4IndodevToolkit\Libraries\IndoSecurity;
 
 
 // Begin_Of_IndoDate_Functions

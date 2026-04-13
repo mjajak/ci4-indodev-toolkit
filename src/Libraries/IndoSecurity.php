@@ -1,6 +1,6 @@
 <?php
 
-namespace Mjajak\CI4IndodevToolkit\Libraries;
+namespace Mjajak\Ci4IndodevToolkit\Libraries;
 
 class IndoSecurity
 {
